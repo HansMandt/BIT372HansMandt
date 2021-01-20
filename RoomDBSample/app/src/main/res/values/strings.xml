@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">RoomDB Example</string>
+    <string name="action_about" />
+    <string name="add_event_btn">Add Event</string>
+    <string name="textview">TextView</string>
+    <string-array name="event_type">
+        <item>Party</item>
+        <item>Concert</item>
+        <item>Gathering</item>
+        <item>Food</item>
+    </string-array>
+</resources>
