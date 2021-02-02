@@ -54,5 +54,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         // TODO: call the method in ViewModel that is in charge of updating the LiveData
+        eventVM.getEvents();
     }
 }

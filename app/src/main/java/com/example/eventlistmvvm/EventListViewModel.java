@@ -23,7 +23,7 @@ public class EventListViewModel extends ViewModel {
         eventsData.setValue(repo.getEvents());
     }
 
-    private EventListViewModel(){}
+    // private EventListViewModel(){}
 
     public MutableLiveData<List<Event>> getEvents() {
         eventsData.setValue(repo.getEvents());
