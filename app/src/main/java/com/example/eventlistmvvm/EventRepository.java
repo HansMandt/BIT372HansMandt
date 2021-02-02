@@ -14,7 +14,7 @@ public class EventRepository {
     private EventDb db;
     private static EventRepository instance;
 
-    private EventRepository(){}
+    private EventRepository() { }
 
     public static EventRepository getInstance(Context context) {
         if (instance == null) {
