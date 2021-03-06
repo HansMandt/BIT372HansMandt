@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button fbtn = findViewById(R.id.convert_btn);
+        Button lbsbtn = findViewById(R.id.convert_lbs_to_kg_btn);
 
         EditText finput = findViewById(R.id.fahrenheit_input);
         TextView ctxt = findViewById(R.id.celcius_text);
@@ -23,6 +24,15 @@ public class MainActivity extends AppCompatActivity {
                 return;
             double celcius = Converter.toCelcius(Float.parseFloat(finput.getText().toString()));
             ctxt.setText(String.format("%.2f ºC", celcius));
+        });
+
+        EditText lbsinput = findViewById(R.id.pounds_input);
+        TextView kgtxt = findViewById(R.id.kilograms_text);
+        lbsbtn.setOnClickListener(v -> {
+            if (lbsinput.getText().length() == 0)
+                return;
+            double kilograms = Converter.toKilograms(Float.parseFloat(lbsinput.getText().toString()));
+            kgtxt.setText(String.format("%.2f kg", kilograms));
         });
     }
 }

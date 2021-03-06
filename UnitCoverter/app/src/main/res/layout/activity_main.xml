@@ -59,11 +59,11 @@
         android:orientation="vertical" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/poundsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
-        android:text="Something to something"
+        android:text="Pounds to Kilograms"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.149"
@@ -71,19 +71,19 @@
         app:layout_constraintTop_toBottomOf="@+id/fahrenheit_input" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/pounds_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="number"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/convert_lbs_to_kg_btn"
         app:layout_constraintHorizontal_bias="0.373"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/poundsTitle" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/convert_lbs_to_kg_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -91,17 +91,17 @@
         android:layout_marginRight="24dp"
         android:text="Convert"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/poundsTitle" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/kilograms_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        android:text="kg"
+        app:layout_constraintEnd_toStartOf="@+id/convert_lbs_to_kg_btn"
         app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/pounds_input" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
