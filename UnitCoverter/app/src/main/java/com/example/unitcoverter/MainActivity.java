@@ -1,11 +1,17 @@
 package com.example.unitcoverter;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
+import com.example.unitcoverter.databinding.ActivityMainBinding;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,25 +20,41 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button fbtn = findViewById(R.id.convert_btn);
-        Button lbsbtn = findViewById(R.id.convert_lbs_to_kg_btn);
+        UnitOutput unitOutput = new UnitOutput("");
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setLifecycleOwner(this);
+        binding.setUnit(unitOutput);
 
-        EditText finput = findViewById(R.id.fahrenheit_input);
-        TextView ctxt = findViewById(R.id.celcius_text);
-        fbtn.setOnClickListener(v -> {
-            if (finput.getText().length() == 0)
-                return;
-            double celcius = Converter.toCelcius(Float.parseFloat(finput.getText().toString()));
-            ctxt.setText(String.format("%.2f ºC", celcius));
-        });
+        EditText convert_input = findViewById(R.id.convertInput);
+        TextView convert_output = findViewById(R.id.convertOutput);
+        Spinner convertSpinner = findViewById(R.id.convert_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.converter_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        convertSpinner.setAdapter(adapter);
 
-        EditText lbsinput = findViewById(R.id.pounds_input);
-        TextView kgtxt = findViewById(R.id.kilograms_text);
-        lbsbtn.setOnClickListener(v -> {
-            if (lbsinput.getText().length() == 0)
+        Button convertbtn = findViewById(R.id.convert_btn);
+
+        convertbtn.setOnClickListener(v -> {
+            if (convert_input.getText().length() == 0)
                 return;
-            double kilograms = Converter.toKilograms(Float.parseFloat(lbsinput.getText().toString()));
-            kgtxt.setText(String.format("%.2f kg", kilograms));
+            String convertString = (String) convertSpinner.getSelectedItem();
+            if (convertString.equals("ºF to ºC")) {
+                double celcius = Converter.toCelcius(Float.parseFloat(convert_input.getText().toString()));
+                convert_output.setText(String.format("%.2f ºC", celcius));
+            }
+            if (convertString.equals("lbs to kg")) {
+                double kilogram = Converter.toKilograms(Float.parseFloat(convert_input.getText().toString()));
+                convert_output.setText(String.format("%.2fkg", kilogram));
+            }
+            if (convertString.equals("oz to cl")) {
+                double centiliter = Converter.toCentiLiters(Float.parseFloat(convert_input.getText().toString()));
+                convert_output.setText(String.format("%.2fcl", centiliter));
+            }
+            if (convertString.equals("mi to km")) {
+                double kilometer = Converter.toKilometers(Float.parseFloat(convert_input.getText().toString()));
+                convert_output.setText(String.format("%.2fkm", kilometer));
+            }
         });
     }
 }

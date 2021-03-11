@@ -19,4 +19,14 @@ public class ConverterTest {
     public void pounds_conversion_isCorrect() {
         assertEquals( 4.54, Converter.toKilograms(10), 0.1);
     }
+
+    @Test
+    public void ounces_conversion_isCorrect() {
+        assertEquals( 28.41, Converter.toCentiLiters(10), 0.1);
+    }
+
+    @Test
+    public void miles_conversion_isCorrect() {
+        assertEquals(96.56, Converter.toKilometers(60), 0.1);
+    }
 }

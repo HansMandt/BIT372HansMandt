@@ -10,6 +10,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.*;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -33,29 +34,32 @@ public class MainActivityUITest {
         assertEquals("com.example.unitcoverter", appContext.getPackageName());
     }
 
+//    @Test
+//    public void can_enter_fahrenheit() {
+//        onView(withId(R.id.fahrenheit_input)).perform(typeText("45"));
+//        onView(withId(R.id.convert_btn)).perform(click());
+//        onView(withId(R.id.celcius_text)).check(matches(withText("7.22 ºC")));
+//    }
+
+//    @Test
+//    public void can_enter_lbs() {
+//        onView(withId(R.id.pounds_input)).perform(typeText("31"));
+//        onView(withId(R.id.convert_lbs_to_kg_btn)).perform(click());
+//        onView(withId(R.id.kilograms_text)).check(matches(withText("14.06 kg")));
+//    }
+
     @Test
-    public void can_enter_fahrenheit() {
-        onView(withId(R.id.fahrenheit_input)).perform(typeText("45"));
+    public void spinner_is_selectable() {
+        onView(withId(R.id.convert_spinner)).perform(click());
+        onView(withText("ºF to ºC")).perform(click());
+        onView(withId(R.id.convertInput)).perform(typeText("50"));
         onView(withId(R.id.convert_btn)).perform(click());
-        onView(withId(R.id.celcius_text)).check(matches(withText("7.22 ºC")));
+        onView(withId(R.id.convertOutput)).check(matches(withText("10.00 ºC")));
     }
 
     @Test
-    public void should_not_enter_empty_fah() {
+    public void should_not_enter_empty_value() {
         onView(withId(R.id.convert_btn)).perform(click());
-        onView(withId(R.id.celcius_text)).check(matches(withText("ºC")));
-    }
-
-    @Test
-    public void can_enter_lbs() {
-        onView(withId(R.id.pounds_input)).perform(typeText("31"));
-        onView(withId(R.id.convert_lbs_to_kg_btn)).perform(click());
-        onView(withId(R.id.kilograms_text)).check(matches(withText("14.06 kg")));
-    }
-
-    @Test
-    public void should_not_enter_empty_lbs() {
-        onView(withId(R.id.convert_lbs_to_kg_btn)).perform(click());
-        onView(withId(R.id.kilograms_text)).check(matches(withText("kg")));
+        onView(withId(R.id.convertInput)).check(matches(withText("")));
     }
 }
